@@ -1,17 +1,22 @@
 package com.felipesouls.eventSistem.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.time.Instant;
 
-public class Blocs {
+@Entity
+@Table(value = "tb_bloc")
+public class Block {
 
     private Integer id;
     private Instant beginer;
     private Instant ending;
 
-    public Blocs() {
+    public Block() {
     }
 
-    public Blocs(Integer id, Instant beginer, Instant ending) {
+    public Block(Integer id, Instant beginer, Instant ending) {
         this.id = id;
         this.beginer = beginer;
         this.ending = ending;
