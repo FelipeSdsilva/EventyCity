@@ -1,7 +1,14 @@
 package com.felipesouls.eventSistem.entities;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_activity")
 public class Activity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;

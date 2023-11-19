@@ -1,7 +1,13 @@
 package com.felipesouls.eventSistem.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_participant")
 public class Participant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;

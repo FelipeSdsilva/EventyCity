@@ -1,22 +1,23 @@
 package com.felipesouls.eventSistem.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 
 @Entity
-@Table(value = "tb_bloc")
-public class Block {
+@Table(name = "tb_bloc")
+public class Bloc {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Instant beginer;
     private Instant ending;
 
-    public Block() {
+    public Bloc() {
     }
 
-    public Block(Integer id, Instant beginer, Instant ending) {
+    public Bloc(Integer id, Instant beginer, Instant ending) {
         this.id = id;
         this.beginer = beginer;
         this.ending = ending;
