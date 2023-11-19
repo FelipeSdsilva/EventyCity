@@ -3,5 +3,5 @@ package com.felipesouls.eventSistem.repositories;
 import com.felipesouls.eventSistem.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoryRepository extends JpaRepository<Integer, Category> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 }
