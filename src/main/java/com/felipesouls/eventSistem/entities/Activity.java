@@ -3,6 +3,9 @@ package com.felipesouls.eventSistem.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_activity")
 public class Activity {
@@ -13,6 +16,16 @@ public class Activity {
     private String name;
     private String description;
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "id_category")
+    private Category category;
+
+    @OneToMany(mappedBy = "activity")
+    private List<Bloc> blocs = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "activities")
+    private List<Participant> participants = new ArrayList<>();
 
     public Activity() {
     }
@@ -54,5 +67,13 @@ public class Activity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

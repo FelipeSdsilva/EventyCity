@@ -14,6 +14,10 @@ public class Bloc {
     private Instant beginer;
     private Instant ending;
 
+    @ManyToOne
+    @JoinColumn(name = "id_activity")
+    private Activity activity;
+
     public Bloc() {
     }
 
@@ -45,5 +49,13 @@ public class Bloc {
 
     public void setEnding(Instant ending) {
         this.ending = ending;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 }
