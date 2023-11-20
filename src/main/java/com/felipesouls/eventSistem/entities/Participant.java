@@ -13,10 +13,12 @@ public class Participant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @Column(unique = true)
     private String email;
 
     @ManyToMany
-    @JoinTable(name = "tb_parcipant_activity",
+    @JoinTable(name = "tb_participant_activity",
             joinColumns = @JoinColumn(name = "id_participant"),
             inverseJoinColumns = @JoinColumn(name = "id_activity"))
     private List<Activity> activities = new ArrayList<>();

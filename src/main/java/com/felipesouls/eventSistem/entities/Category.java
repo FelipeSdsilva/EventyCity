@@ -12,7 +12,6 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
     private String description;
 
     @OneToMany(mappedBy = "category")
@@ -21,9 +20,8 @@ public class Category {
     public Category() {
     }
 
-    public Category(Integer id, String name, String description) {
+    public Category(Integer id, String description) {
         this.id = id;
-        this.name = name;
         this.description = description;
     }
 
@@ -33,14 +31,6 @@ public class Category {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -53,5 +43,18 @@ public class Category {
 
     public List<Activity> getActivities() {
         return activities;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Category category)) return false;
+
+        return getId() != null ? getId().equals(category.getId()) : category.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getId() != null ? getId().hashCode() : 0;
     }
 }

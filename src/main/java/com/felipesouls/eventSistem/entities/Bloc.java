@@ -11,7 +11,11 @@ public class Bloc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Instant beginer;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant begin;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant ending;
 
     @ManyToOne
@@ -21,10 +25,11 @@ public class Bloc {
     public Bloc() {
     }
 
-    public Bloc(Integer id, Instant beginer, Instant ending) {
+    public Bloc(Integer id, Instant begin, Instant ending, Activity activity) {
         this.id = id;
-        this.beginer = beginer;
+        this.begin = begin;
         this.ending = ending;
+        this.activity = activity;
     }
 
     public Integer getId() {
@@ -35,12 +40,12 @@ public class Bloc {
         this.id = id;
     }
 
-    public Instant getBeginer() {
-        return beginer;
+    public Instant getBegin() {
+        return begin;
     }
 
-    public void setBeginer(Instant beginer) {
-        this.beginer = beginer;
+    public void setBegin(Instant begin) {
+        this.begin = begin;
     }
 
     public Instant getEnding() {
@@ -57,5 +62,18 @@ public class Bloc {
 
     public void setActivity(Activity activity) {
         this.activity = activity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bloc bloc)) return false;
+
+        return getId() != null ? getId().equals(bloc.getId()) : bloc.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getId() != null ? getId().hashCode() : 0;
     }
 }
